@@ -2622,8 +2622,6 @@ dependencies = [
 [[package]]
 name = "solana-measure"
 version = "2.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "33b2047a2f588082b71080b060918f107c3330ae1505f759c3b2d74bae9d9c88"
 
 [[package]]
 name = "solana-metrics"
