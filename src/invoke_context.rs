@@ -29,12 +29,12 @@ use {
         precompiles::Precompile,
         pubkey::Pubkey,
         saturating_add_assign,
-        stable_layout::stable_instruction::StableInstruction,
         sysvar,
         transaction_context::{
             IndexOfAccount, InstructionAccount, TransactionAccount, TransactionContext,
         },
     },
+    solana_stable_layout::stable_instruction::StableInstructionHost,
     solana_timings::{ExecuteDetailsTimings, ExecuteTimings},
     solana_type_overrides::sync::{atomic::Ordering, Arc},
     solana_vote::vote_account::VoteAccountsHashMap,
@@ -307,7 +307,7 @@ impl<'a> InvokeContext<'a> {
     /// Entrypoint for a cross-program invocation from a builtin program
     pub fn native_invoke(
         &mut self,
-        instruction: StableInstruction,
+        instruction: StableInstructionHost,
         signers: &[Pubkey],
     ) -> Result<(), InstructionError> {
         let (instruction_accounts, program_indices) =
@@ -327,7 +327,7 @@ impl<'a> InvokeContext<'a> {
     #[allow(clippy::type_complexity)]
     pub fn prepare_instruction(
         &mut self,
-        instruction: &StableInstruction,
+        instruction: &StableInstructionHost,
         signers: &[Pubkey],
     ) -> Result<(Vec<InstructionAccount>, Vec<IndexOfAccount>), InstructionError> {
         // Finds the index of each account in the instruction by its pubkey.
@@ -1138,7 +1138,7 @@ mod tests {
                 },
                 metas.clone(),
             );
-            let inner_instruction = StableInstruction::from(inner_instruction);
+            let inner_instruction = StableInstructionHost::from(inner_instruction);
             let (inner_instruction_accounts, program_indices) = invoke_context
                 .prepare_instruction(&inner_instruction, &[])
                 .unwrap();
