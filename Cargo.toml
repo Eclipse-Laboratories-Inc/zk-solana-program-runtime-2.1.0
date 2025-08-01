@@ -26,7 +26,7 @@ solana-frozen-abi-macro = { version = "=2.1.0", optional = true, features = [
 ] }
 solana-log-collector = "=2.1.0"
 solana-measure = { path = "solana-measure", version = "=2.1.0" }
-solana-metrics = "=2.1.0"
+solana-metrics = { path = "solana-metrics", version = "=2.1.0" }
 solana-sdk = { path = "solana-sdk", version = "=2.1.0" }
 solana-timings = "=2.1.0"
 solana-type-overrides = "=2.1.0"
@@ -58,4 +58,5 @@ shuttle-test = ["solana-type-overrides/shuttle-test", "solana_rbpf/shuttle-test"
 
 [patch.crates-io]
 solana-measure = { path = "solana-measure" }
+solana-metrics = { path = "solana-metrics" }
 solana-sdk = { path = "solana-sdk" }

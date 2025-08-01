@@ -4,3 +4,6 @@
 [submodule "solana-sdk"]
 	path = solana-sdk
 	url = git@github.com:Eclipse-Laboratories-Inc/zk-solana-sdk-2.1.0.git
+[submodule "solana-metrics"]
+	path = solana-metrics
+	url = git@github.com:Eclipse-Laboratories-Inc/zk-solana-metrics-2.1.0.git
